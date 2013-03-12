@@ -1,0 +1,39 @@
+.welcome-message {
+	margin-top: 100px;
+	text-align: center;
+}
+.welcome-submessage {
+	margin-top:10px;
+	text-align: center;
+}
+.log-inn-text {
+	margin: 20px;
+	text-align: center;
+}
+.welcome-list {
+	font-size: 18px;
+	display: block;
+
+}
+h5 {
+	margin-left: 20px;
+}
+
+.welcome-list li {
+	list-style-type: none;
+	margin:10px;
+}
+.login-form {
+	margin-left:20px;
+
+}
+a {
+	text-decoration: none;
+}
+.create-account {
+	float: right;
+	cursor: hand; 
+  	cursor: pointer;
+  	margin-right: 20px;
+  	color: #333;
+}

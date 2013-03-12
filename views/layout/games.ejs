@@ -1,0 +1,50 @@
+		<div class="row games-row">
+		    <div class="span12 contactpage info">
+		    	<div class="span2">
+		    		<h2>New game</h2>
+					<form>
+						<fieldset>
+						<label>Select team</label>
+						<select id="team_name" class="span2">
+						  <option>Sivil protection</option>
+						  <option selected="selected">Red Cross</option>
+						  <option>Army</option>
+						</select>
+						    <label>Game name</label>
+						    <input id="name" type="text" class="span2" placeholder="Game name..">
+						    <label>Description</label>
+						    <input id="desc" type="text" class="span2" placeholder="Game description..">
+							<label>
+						    <button type="submit" class="btn btn-success newgame">Publish game</button>
+						</fieldset>
+		    	</div>
+		    	<div class="span2">
+		    	<h3>Panic</h3>
+		    	<label>Panic wave(minutes)</label>
+		    	<input id="panictime" type="number" class="span2" placeholder="5">
+		    	<label>Roundtime(Seconds)</label>
+		    	<input id="roundtime" type="number" class="span2" placeholder="60">
+		    	</div>
+		    	<div class="span1">
+			    		<h3>Map</h3>
+			    		<label>width</label>
+			    		<select id="mapheight" class="span1">
+						  <option>2</option>
+						  <option selected="selected">3</option>
+						  <option>4</option>
+						</select>
+						<label>height</label>
+						<select id="mapwith" class="span1">
+						  <option>2</option>
+						  <option selected="selected">3</option>
+						  <option>4</option>
+						  <option>5</option>
+						  <option>6</option>
+						</select>
+				</div>
+				<div class="span6">
+					<div id="dynamicTable"></div>
+				</div>
+				</form>
+		    </div>
+		</div>

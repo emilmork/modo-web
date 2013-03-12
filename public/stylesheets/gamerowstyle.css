@@ -1,0 +1,28 @@
+.newgame {
+	bottom: 0;
+	margin-top: 50px;
+}
+
+.contactpage {
+  background: #87C7E6;
+  color: #333;
+  min-height: 300px;
+  height: auto;
+  margin-top: 20px;
+}
+
+#maptable {
+	margin-top: 15px;
+}
+
+.sectorname {
+	width: auto;
+	height: 30px;
+	max-width: 120px;
+}
+.mapsector {
+	padding: 5px;
+}
+.maprow {
+	padding: 5px;
+}

@@ -1,0 +1,18 @@
+<script id="team" type="text/html">
+{{#teams}}
+<li class="team-element">
+    <div class="span4">
+      <h4 class="team-header">{{ name }}</h4>
+      <p class="team-description">{{description}}</p>
+    </div>
+    <div class="span2">
+    <h5>Games</h5>
+    <ul class="games-list">
+	  {{#games}}
+	    <li>{{name}}</li>
+	  {{/games}}
+    </ul>
+    </div>
+</li>
+{{/teams}}
+</script>
