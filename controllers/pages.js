@@ -13,7 +13,14 @@ exports.setup = function (app) {
   app.get('/about', controller.about);
   app.get('/teams', controller.teams);
   app.get('/admin',app.auth,controller.admin);
+  app.get('/teams/:team/:id',controller.game);
 };
+
+
+PageController.prototype.game = function(req,res){
+  res.render('index', { game: req.params.id});
+}
+
 
 PageController.prototype.frontpage = function(req, res){
 	res.render('index', { title: 'Express' });

@@ -1,18 +1,32 @@
-<script id="team" type="text/html">
-{{#teams}}
-<li class="team-element">
-    <div class="span4">
-      <h4 class="team-header">{{ name }}</h4>
-      <p class="team-description">{{description}}</p>
+<script id="team" type="text/x-handlebars-template">
+{{#each teams}}
+<div class="row contact-row" id="teams-row">
+  <li class="team-element">
+      <div class="span2">
+        <h3 class="team-header">{{name}}</h3>
+        <p class="team-description">{{desc}}</p>
+      </div>
+      <div class="span3">
+      <h5>Games</h5>
+      <ul class="games-list">
+  	  {{#each games}}
+        <li><a href="/teams/{{../name}}/{{name}}"><i class="game-icon icon-play"></i>{{name}}
+        {{#unless played}}
+        <span class="not-played">(Not played)</span>
+        {{/unless}}
+        </a></li>
+      {{else}}
+        <a>No games</a>
+  	  {{/each}}
+      </ul>
+      </div>
+  </li>
+    <div class="span2 btn-group">
+        <button class="btn btn-small btn-success" id="add-game">Add game</button>
+        <button class="btn btn-small btn-inverse" id="remove-team" value="{{name}}">Delete team</button>
     </div>
-    <div class="span2">
-    <h5>Games</h5>
-    <ul class="games-list">
-	  {{#games}}
-	    <li>{{name}}</li>
-	  {{/games}}
-    </ul>
-    </div>
-</li>
-{{/teams}}
+</div>
+{{else}}
+<h3>No teams created</h3>
+{{/each}}
 </script>

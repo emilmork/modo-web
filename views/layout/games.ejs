@@ -2,28 +2,32 @@
 		    <div class="span12 contactpage info">
 		    	<div class="span2">
 		    		<h2>New game</h2>
-					<form>
+					<form action="" id="newgame-form">
 						<fieldset>
 						<label>Select team</label>
 						<select id="team_name" class="span2">
-						  <option>Sivil protection</option>
-						  <option selected="selected">Red Cross</option>
-						  <option>Army</option>
 						</select>
+						<div class="control-group">
 						    <label>Game name</label>
-						    <input id="name" type="text" class="span2" placeholder="Game name..">
+						    <input name="name" id="name" type="text" class="span2" placeholder="Game name..">
+						</div>
+						<div class="control-group">
 						    <label>Description</label>
-						    <input id="desc" type="text" class="span2" placeholder="Game description..">
-							<label>
+						    <input name="desc" id="desc" type="text" class="span2" placeholder="Game description..">
+						</div>
 						    <button type="submit" class="btn btn-success newgame">Publish game</button>
 						</fieldset>
 		    	</div>
 		    	<div class="span2">
 		    	<h3>Panic</h3>
-		    	<label>Panic wave(minutes)</label>
-		    	<input id="panictime" type="number" class="span2" placeholder="5">
-		    	<label>Roundtime(Seconds)</label>
-		    	<input id="roundtime" type="number" class="span2" placeholder="60">
+		    	<div class="control-group">
+			    	<label>Panic wave(minutes)</label>
+			    	<input name="panictime" id="panictime" type="number" class="span2" min="1" max="5" value="3">
+		   		 </div>
+		   		 <div class="control-group">
+			    	<label>Roundtime(Seconds)</label>
+			    	<input name="roundtime" id="roundtime" type="number" class="span2" min="30" max="120" value="60">
+			    </div>
 		    	</div>
 		    	<div class="span1">
 			    		<h3>Map</h3>
@@ -47,4 +51,5 @@
 				</div>
 				</form>
 		    </div>
+	
 		</div>

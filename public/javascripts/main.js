@@ -10,10 +10,13 @@ require.config({
   paths: {
     // Libraries
     jquery:   'javascripts/libs/jquery/jquery.182',
+    jquery_validation: 'javascripts/libs/jquery/jquery.validate.min',
     bootstrap: 'javascripts/libs/bootstrap/bootstrap',
     ish : 'javascripts/libs/icanhaz/ICanHaz',
+    handlebar : 'javascripts/libs/icanhaz/handlebars',
     scripts: 'javascripts/plugins',
     socket: '/socket.io/socket.io',
+    chart: 'javascripts/libs/highcharts/highcharts'
   },
   
   shim: {
@@ -25,7 +28,7 @@ require.config({
 
 
 
-define(['jquery', '/page.js', 'bootstrap','scripts/games','scripts/teams','scripts/contact','scripts/base','socket','ish'], function($) {  
+define(['jquery', '/page.js','scripts/game','scripts/games','scripts/teams','scripts/contact','scripts/base','socket','ish','handlebar','chart','jquery_validation'], function($) {  
   var Routes = {
   	frontpage: function () {
        $('#front-page-content').show().siblings('.page-role').hide();
@@ -46,6 +49,10 @@ define(['jquery', '/page.js', 'bootstrap','scripts/games','scripts/teams','scrip
     	$("a[href='/about']").parent().addClass("active").siblings().removeClass('active');
       $('#contact-content').showContact();
       console.log("about");
+    },
+    game: function(req,res){
+      console.log("Game method called");
+      $('#selected-game-content').showSelectedGame(req);
     }
   };
 
@@ -56,6 +63,7 @@ define(['jquery', '/page.js', 'bootstrap','scripts/games','scripts/teams','scrip
     page('/games', Routes.games);
     page('/about', Routes.about);
     page('/teams', Routes.teams);
+    page('/teams/:team/:id',Routes.game);
     page();
   });
 

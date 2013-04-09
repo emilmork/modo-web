@@ -1,0 +1,21 @@
+<script id="agame" type="text/x-handlebars-template">
+<div class="btn-group">
+ {{#unless started}}
+ <button class="btn btn-small btn-success" id="start-game">Start Game</button>
+ {{/unless}}
+ <button class="btn btn-small btn-inverse" value="{{name}}" id="remove-game">Delete game</button>
+ </div>
+<h1>{{name}}</h1>
+<h3>{{desc}}</h3>
+{{#if players}}
+<h5>Players:</h5>
+	<ul>
+		{{#each players}}
+			<li><a><i class="game-icon icon-user"></i>{{name}}</a></li>
+		{{/each}}
+	</ul>
+{{else}}
+<h5>No players joined</h5>
+{{/if}}
+ </div>
+</script>

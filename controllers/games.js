@@ -10,6 +10,7 @@ exports.setup = function (io,server,actionhero) {
 
 
 	io.listen(server).on('connection', function (socket) {
+		console.log("Connected with GAMESERVER");
 		//Send action to game server and return callback
 		socket.on('sendAction',function(action,params,callback){
 			console.log("sendAction");

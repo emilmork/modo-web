@@ -1,4 +1,4 @@
-;(define(['jquery','scripts/base','socket'], function ($,base) {
+;(define(['jquery','scripts/base','socket','handlebar','jquery_validation'], function ($,base) {
   // Create the defaults once
   var pluginName = "showGames",
     defaults = {
@@ -42,8 +42,64 @@
     // bind event listeners
     this.bindEvents();
 
+    this.initValidation();
+
+    this.renderTeamNames();
 
   };
+
+
+Plugin.prototype.renderTeamNames = function(){
+    var self = this;
+    var source   = $("#team-names").html();
+    var template = Handlebars.compile(source);
+
+      var params = { 'saved': true};
+      this.sendAction('getTeams',params,function(response){  
+          self.team = response;
+          var html = template(response);
+          console.log("teams:");
+          console.log(response);
+          $("#team_name").append(html);
+      });
+}
+
+
+  Plugin.prototype.initValidation = function(){
+    console.log("validating..");
+     $('#newgame-form').validate(
+       {
+        rules: {
+          name: {
+            minlength: 3,
+            required: true
+          },
+          desc : {
+            minlength: 4,
+            required: true
+          },
+          panictime : {
+            number : true,
+            min: 1,
+            max: 10,
+            required: true
+          },
+          roundtime: {
+            number: true,
+            min: 40,
+            max: 180,
+            required: true
+          }
+        },
+        highlight: function(element) {
+          $(element).closest('.control-group').removeClass('success').addClass('error');
+        },
+        success: function(element) {
+          console.log("Success");
+          element.text("Ok!").addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+        }
+   });
+  }
 
   /**
    * Listen for different events. Also allows third party apps to communicate
@@ -64,17 +120,17 @@
       , team_name = this.$el.find(this.options.formSelector + " select#team_name option:selected").val()
       , name = this.$el.find(this.options.formSelector + " input#name").val()
       , desc = this.$el.find(this.options.formSelector + " input#desc").val()
-      , panictime = this.$el.find(this.options.formSelector + " input#panictime").val()
-      , roundtime = this.$el.find(this.options.formSelector + " input#roundtime").val()
+      , panictime = $("#panictime").val()
+      , roundtime = $("#roundtime").val();
    // var io = this.connection();
-      alert(team_name);
+      alert(name +" was created!");
 
-    var game = {'name' : name, 'desc' : desc};
+    var game = {'name' : name, 'desc' : desc, 'panicinterval' : (panictime * 60 * 1000), 'round' : (roundtime * 1000)};
+    console.log(game);
     var params = { 'team_name': team_name, 'game' : game };
 
     this.sendAction('addGame',params);
 
-    //io.emit('addGame', team_name ,game);
   }
 
 

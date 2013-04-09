@@ -11,6 +11,17 @@ a {
   position: relative;
 }
 
+label.valid {
+  width: 24px;
+  height: 24px;
+}
+label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+
 /** Navbar **/
 .navbar .nav > li > a:hover {
   text-decoration: none;

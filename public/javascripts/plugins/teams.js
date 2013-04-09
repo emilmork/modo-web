@@ -1,4 +1,4 @@
-;(define(['jquery','scripts/base','ish'], function ( $,base ) {
+;(define(['jquery','scripts/base','ish','handlebar'], function ( $,base ) {
   // Create the defaults once
   var pluginName = "showTeams",
     defaults = {
@@ -9,8 +9,10 @@
 
   // The actual plugin constructor
   function Plugin( element ) {
+    console.log("Teams plugin called");
     this.el = element;
     this.$el = $(element);
+    this.team;
     this.options = $.extend( {}, defaults) ;        
     this._defaults = defaults;
     this._name = pluginName;
@@ -34,19 +36,32 @@
     this.$newslist = this.$el.find(this.options.newsSelector);
     this.$el.on("submit", this.options.formSelector, $.proxy(this.addTeam, this));
 
-    // bind event listeners
-    this.bindEvents();
+    var self = this;
+    $(document).click(function(e) {
+  // hide popup
+  console.log(e);
+      if(e.target.id == "remove-team"){
+        console.log("Target has id remove team");
+        self.removeTeam(e.target.value);
+      }
+    });
+
+
     this.renderTeams();
-
-
-
-
   };
 
+  Plugin.prototype.removeTeam = function(team_name){
+    console.log("Team_name: " + team_name);
+
+    var params = {'team_name' : team_name};
+    this.sendAction('removeTeam',params);
+    
+    location.reload();
+  }
 
   Plugin.prototype.addTeam = function(){
     var team_name = this.$el.find(this.options.formSelector + " input#name").val();
-    var team = {'name':team_name,'games':{}};
+    var team = {'name': team_name,'games':{}};
     var params = {'team' : team};
     
     this.sendAction('addTeam',params,function(response){
@@ -54,23 +69,20 @@
     });
   }
 
-  Plugin.prototype.renderTeams = function(){
 
-      this.sendAction('getTeams',null,function(response){         
-          var team_data = ich.team(response);
-          $("#teams-list").append(team_data);
+    Plugin.prototype.renderTeams = function(){
+    var self = this;
+    var source   = $("#team").html();
+    var template = Handlebars.compile(source);
+
+      var params = { 'saved': true};
+      this.sendAction('getTeams',params,function(response){  
+          self.team = response;
+          var html = template(response);
+          $("#teams-list").append(html);
+
       });
-    
   };
-
-  /**
-   * Listen for different events. Also allows third party apps to communicate
-   * with our plugin.
-   **/
-  Plugin.prototype.bindEvents = function () {
-    this.$el.on(pluginName + ".teamsLoaded", $.proxy(this.render, this));
-  };
-
 
 
   Plugin.prototype.render = function (ev, data) {
