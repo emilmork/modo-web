@@ -76,8 +76,10 @@
     var template = Handlebars.compile(source);
 
       var params = { 'saved': true};
+      console.log("fetching teams");
       this.sendAction('getTeams',params,function(response){  
           self.team = response;
+          console.log("rendering teams..");
           var html = template(response);
           $("#teams-list").append(html);
 

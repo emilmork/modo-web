@@ -59,13 +59,21 @@
 
   Plugin.prototype.startGame = function(){
     var params = {game_name : this.gameName};
-    this.sendAction('startGame',params);
+    this.sendAction('startGame',params,function(response){
+      if(response.started == 'ok'){
+        $("#start-game").html("Started!");
+        $('#start-game').attr("disabled", true);
+      }
+    });
   }
 
   Plugin.prototype.removeGame = function(game_name){
     var params = {'team_name': this.teamName, 'game_name' : game_name};
-    this.sendAction('removeGame',params);
-    window.location = "/teams";
+    this.sendAction('removeGame',params,function(response){
+      if(response.deleted = "ok"){
+          window.location = "/teams";
+      }
+    });
   }
 
   Plugin.prototype.showPage = function(){
