@@ -14,7 +14,7 @@
     console.log("plugin constructor");
     this.el = element;
     this.$el = $(element);
-    this.options = $.extend( {}, defaults) ;        
+    this.options = $.extend( {}, defaults);        
     this._defaults = defaults;
     this._name = pluginName;
 

@@ -37,18 +37,14 @@ define(['jquery', '/page.js','scripts/game','scripts/games','scripts/teams','scr
     games: function () {
        $("a[href='/games']").parent().addClass("active").siblings().removeClass('active');
         $('#games-content').showGames();
-        console.log("games");
-
     },
     teams: function () {
       	$("a[href='/teams']").parent().addClass("active").siblings().removeClass('active');
         $('#teams-content').showTeams();
-        console.log("teams");
     },
     about: function () {
     	$("a[href='/about']").parent().addClass("active").siblings().removeClass('active');
       $('#contact-content').showContact();
-      console.log("about");
     },
     game: function(req,res){
       console.log("Game method called");

@@ -3,7 +3,11 @@
  {{#unless started}}
  <button class="btn btn-small btn-success" id="start-game">Start Game</button>
  {{else}}
- <button class="btn btn-small btn-success" disabled="true" id="start-game">Started!</button>
+ {{#if played}}
+ <button class="btn btn-small btn-danger" disabled="true">Stopped</button>
+ {{else}}
+ <button class="btn btn-small btn-danger" id="stop-game">Stop Game</button>
+ {{/if}}
  {{/unless}}
  <button class="btn btn-small btn-inverse" value="{{name}}" id="remove-game">Delete game</button>
  </div>
@@ -11,7 +15,7 @@
 <h3>{{desc}}</h3>
 {{#if players}}
 <h5>Players:</h5>
-	<ul>
+	<ul class="games-list">
 		{{#each players}}
 			<li><a><i class="game-icon icon-user"></i>{{name}}</a></li>
 		{{/each}}

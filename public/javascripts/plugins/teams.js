@@ -1,4 +1,4 @@
-;(define(['jquery','scripts/base','ish','handlebar'], function ( $,base ) {
+;(define(['jquery','scripts/base','socket','ish','handlebar'], function ( $,base ) {
   // Create the defaults once
   var pluginName = "showTeams",
     defaults = {
@@ -16,10 +16,12 @@
     this.options = $.extend( {}, defaults) ;        
     this._defaults = defaults;
     this._name = pluginName;
+    this.socket;
 
     // Run INIT when constructor is called.
     this.init();
   }
+
 
   // Extend our plugin to implement the shared methods.
   $.extend(Plugin.prototype,base);
@@ -27,6 +29,9 @@
   // Initialize plugin
   Plugin.prototype.init = function () {
     // Render page structure template 
+
+    this.socket = io.connect();
+
     console.log(this.options.newsSelector);
 
     // Show this page. (iplement showPage() base method)
@@ -38,10 +43,7 @@
 
     var self = this;
     $(document).click(function(e) {
-  // hide popup
-  console.log(e);
       if(e.target.id == "remove-team"){
-        console.log("Target has id remove team");
         self.removeTeam(e.target.value);
       }
     });
@@ -50,13 +52,21 @@
     this.renderTeams();
   };
 
+  Plugin.prototype.sendA = function (action,params,callback) {
+      console.log("[BASE] sending action: " + action + "...");
+      this.socket.emit('sendAction',action,params,function(cb){
+        console.log("[BASE] response received.");
+        callback(cb);
+      });
+    }
+
   Plugin.prototype.removeTeam = function(team_name){
-    console.log("Team_name: " + team_name);
 
     var params = {'team_name' : team_name};
-    this.sendAction('removeTeam',params);
+    this.sendA('removeTeam',params,function(callback){
+      location.reload();
+    });
     
-    location.reload();
   }
 
   Plugin.prototype.addTeam = function(){
@@ -64,7 +74,7 @@
     var team = {'name': team_name,'games':{}};
     var params = {'team' : team};
     
-    this.sendAction('addTeam',params,function(response){
+    this.sendA('addTeam',params,function(response){
       //TODO
     });
   }
@@ -72,17 +82,19 @@
 
     Plugin.prototype.renderTeams = function(){
     var self = this;
+
     var source   = $("#team").html();
     var template = Handlebars.compile(source);
+    
+     var params = { 'saved': true};
 
-      var params = { 'saved': true};
       console.log("fetching teams");
-      this.sendAction('getTeams',params,function(response){  
+      this.sendA('getTeams',params,function(response){  
+        console.log("[getTeams]response: ");
+        console.log("response");
           self.team = response;
-          console.log("rendering teams..");
           var html = template(response);
           $("#teams-list").append(html);
-
       });
   };
 

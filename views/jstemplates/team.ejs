@@ -9,7 +9,7 @@
       <div class="span3">
       <h5>Games</h5>
       <ul class="games-list">
-  	  {{#each games}}
+      {{#each games}}
         <li><a href="/teams/{{../name}}/{{name}}"><i class="game-icon icon-play"></i>{{name}}
         {{#unless played}}
         <span class="not-played">(Not played)</span>
@@ -17,7 +17,7 @@
         </a></li>
       {{else}}
         <a>No games</a>
-  	  {{/each}}
+      {{/each}}
       </ul>
       </div>
   </li>
