@@ -21,6 +21,10 @@
 		{{/each}}
 	</ul>
 {{else}}
+{{#if played}}
+	<h5>Score: {{score}}</h5>
+{{/if}}
+
 <h5>No players joined</h5>
 {{/if}}
  </div>

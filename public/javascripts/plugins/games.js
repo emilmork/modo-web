@@ -121,11 +121,14 @@ Plugin.prototype.renderTeamNames = function(){
       , name = this.$el.find(this.options.formSelector + " input#name").val()
       , desc = this.$el.find(this.options.formSelector + " input#desc").val()
       , panictime = $("#panictime").val()
-      , roundtime = $("#roundtime").val();
-   // var io = this.connection();
+      , roundtime = $("#roundtime").val()
+      , equipments = new Array();
+
+      equipments[0] = $("#extinguisher_count").val();
+
       alert(name +" was created!");
 
-    var game = {'name' : name, 'desc' : desc, 'panicinterval' : (panictime * 60 * 1000), 'round' : (roundtime * 1000)};
+    var game = {'name' : name, 'desc' : desc, 'panicinterval' : (panictime * 60 * 1000), 'round' : (roundtime * 1000),'equipments' : equipments};
     console.log(game);
     var params = { 'team_name': team_name, 'game' : game };
 

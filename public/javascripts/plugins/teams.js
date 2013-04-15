@@ -9,7 +9,6 @@
 
   // The actual plugin constructor
   function Plugin( element ) {
-    console.log("Teams plugin called");
     this.el = element;
     this.$el = $(element);
     this.team;
@@ -53,9 +52,7 @@
   };
 
   Plugin.prototype.sendA = function (action,params,callback) {
-      console.log("[BASE] sending action: " + action + "...");
       this.socket.emit('sendAction',action,params,function(cb){
-        console.log("[BASE] response received.");
         callback(cb);
       });
     }
@@ -79,7 +76,6 @@
     });
   }
 
-
     Plugin.prototype.renderTeams = function(){
     var self = this;
 
@@ -88,7 +84,6 @@
     
      var params = { 'saved': true};
 
-      console.log("fetching teams");
       this.sendA('getTeams',params,function(response){  
         console.log("[getTeams]response: ");
         console.log("response");

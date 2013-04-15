@@ -3,6 +3,20 @@
 	margin-top: 50px;
 }
 
+.tools {
+
+}
+
+.extinguisher {
+	height: 50px;
+	width: 50px;
+}
+
+#extinguisher_count {
+	margin-top: 10px;
+	height: 25px;
+}
+
 .contactpage {
   background: #87C7E6;
   color: #333;
