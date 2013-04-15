@@ -11,6 +11,11 @@ a {
   position: relative;
 }
 
+.about {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
 label.valid {
   width: 24px;
   height: 24px;
