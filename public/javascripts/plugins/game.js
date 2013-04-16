@@ -71,7 +71,11 @@
     var self = this;
        var params = {game_name : this.gameName, team_name: this.teamName};
       this.sendAction('stopGame',params,function(response){
-        self.getGame();
+        console.log("response from stopGame: " + response.stopped);
+        if(response.stopped = "ok"){
+          self.getGame();
+        }
+        
     });
   }
 
@@ -110,6 +114,7 @@ Plugin.prototype.getGame = function(){
   this.sendAction('getGame',params,function(response){
     console.log("Render game:");
     console.log(response.game);
+
     var html = template(response.game);
     $('#game-info').empty();
     $('#game-info').append(html);
