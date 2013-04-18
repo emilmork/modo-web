@@ -1,59 +1,63 @@
 		<div class="row games-row">
-		    <div class="span12 contactpage info">
-		    	<div class="span2">
-		    		<h2>New game</h2>
+			<div class="span12 contactpage info">
+				<div class="span2">
+					<h2>New game</h2>
 					<form action="" id="newgame-form">
 						<fieldset>
-						<label>Select team</label>
-						<select id="team_name" class="span2">
-						</select>
-						<div class="control-group">
-						    <label>Game name</label>
-						    <input name="name" id="name" type="text" class="span2" placeholder="Game name..">
-						</div>
-						<div class="control-group">
-						    <label>Description</label>
-						    <input name="desc" id="desc" type="text" class="span2" placeholder="Game description..">
-						</div>
-						    <button type="submit" class="btn btn-success newgame">Publish game</button>
+
+							<select id="team_name" class="span2">
+							</select>
+							<div class="control-group">
+								<label>Game name</label>
+								<input name="name" id="name" type="text" class="span2" placeholder="Game name..">
+							</div>
+							<div class="control-group">
+								<label>Game description</label>
+								<input name="desc" id="desc" type="text" class="span2" placeholder="Game description..">
+							</div>
+							<label>Game debrief</label>
+							<textarea id="debrief" rows="3"></textarea>
+							<label class="checkbox">
+								<input id="show-civilans-checkbox" type="checkbox"> Show the number of civilians
+							</label>
+							<button type="submit" class="btn btn-success newgame">Publish game</button>
 						</fieldset>
-		    	</div>
-		    	<div class="span2">
-		    	<h3>Settings</h3>
-		    	<div class="control-group">
-			    	<label>Panic wave(minutes)</label>
-			    	<input name="panictime" id="panictime" type="number" class="span2" min="1" max="5" value="3">
-		   		 </div>
-		   		 <div class="control-group">
-			    	<label>Roundtime(Seconds)</label>
-			    	<input name="roundtime" id="roundtime" type="number" class="span2" min="30" max="120" value="60">
-			    </div>
-			    <div class="tools">
-			    	<img src="../images/equipment_extinguisher.png" class="img-rounded extinguisher">
-			    	<input name="extinguisher" id="extinguisher_count" type="number" class="span1" min="0" max="3" value="1">
-			    </div>
-		    	</div>
-		    	<div class="span1">
-			    		<h3>Map</h3>
-			    		<label>width</label>
-			    		<select id="mapheight" class="span1">
-						  <option>2</option>
-						  <option selected="selected">3</option>
-						  <option>4</option>
+					</div>
+					<div class="span2">
+						<h3>Settings</h3>
+						<div class="control-group">
+							<label>Panic wave(minutes)</label>
+							<input name="panictime" id="panictime" type="number" class="span2" min="1" max="5" value="3">
+						</div>
+						<div class="control-group">
+							<label>Roundtime(Seconds)</label>
+							<input name="roundtime" id="roundtime" type="number" class="span2" min="30" max="120" value="60">
+						</div>
+					</div>
+					<div class="span1">
+						<h3>Map</h3>
+						<label>width</label>
+						<select id="mapheight" class="span1">
+							<option>2</option>
+							<option selected="selected">3</option>
+							<option>4</option>
 						</select>
 						<label>height</label>
 						<select id="mapwith" class="span1">
-						  <option>2</option>
-						  <option selected="selected">3</option>
-						  <option>4</option>
-						  <option>5</option>
-						  <option>6</option>
+							<option>2</option>
+							<option selected="selected">3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
 						</select>
-				</div>
-				<div class="span6">
-					<div id="dynamicTable"></div>
-				</div>
+					</div>
+					<div class="span6">
+						<div id="dynamicTable"></div>
+						<div class="tools">
+							<img src="../images/equipment_extinguisher.png" class="img-rounded extinguisher">
+							<input name="extinguisher" id="extinguisher_count" type="number" class="span1" min="0" max="3" value="1">
+						</div>
+					</div>
 				</form>
-		    </div>
-	
+			</div>
 		</div>

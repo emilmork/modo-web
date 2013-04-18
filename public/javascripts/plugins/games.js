@@ -122,14 +122,21 @@ Plugin.prototype.renderTeamNames = function(){
       , desc = this.$el.find(this.options.formSelector + " input#desc").val()
       , panictime = $("#panictime").val()
       , roundtime = $("#roundtime").val()
-      , equipments = new Array();
+      , equipments = new Array()
+      , debrief = $("#debrief").val();
+
+      if($("#show-civilans-checkbox").checked){
+        debrief += "\n\n\n There are in average two civilans in each sector";
+      }
+      
+      alert(debrief);
 
       equipments[0] = $("#extinguisher_count").val();
 
-      alert(name +" was created!");
+      
 
-    var game = {'name' : name, 'desc' : desc, 'panicinterval' : (panictime * 60 * 1000), 'round' : (roundtime * 1000),'equipments' : equipments};
-    console.log(game);
+    var game = {'name' : name, 'desc' : desc, 'panicinterval' : (panictime * 60 * 1000), 'round' : (roundtime * 1000),'equipments' : equipments,'debrief' : debrief};
+
     var params = { 'team_name': team_name, 'game' : game };
 
     this.sendAction('addGame',params);
