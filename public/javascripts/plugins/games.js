@@ -129,10 +129,9 @@ Plugin.prototype.renderTeamNames = function(){
         debrief += "\n\n\n There are in average two civilans in each sector";
       }
       
-      alert(debrief);
+      alert("Game created!");
 
       equipments[0] = $("#extinguisher_count").val();
-
       
 
     var game = {'name' : name, 'desc' : desc, 'panicinterval' : (panictime * 60 * 1000), 'round' : (roundtime * 1000),'equipments' : equipments,'debrief' : debrief};
