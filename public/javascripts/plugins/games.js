@@ -128,7 +128,10 @@ Plugin.prototype.renderTeamNames = function(){
       if($("#show-civilans-checkbox").checked){
         debrief += "\n\n\n There are in average two civilans in each sector";
       }
-      debrief += "\n\n Overall goal: Get as many civilans as possible back to the blue sector(safe zone)."
+      if(debrief){
+        debrief += "\n\n Overall goal:\n Get as many civilans as possible back to the blue sector(safe zone)."
+
+      }
       
       alert("Game created!");
 
