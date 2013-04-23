@@ -44,12 +44,15 @@
     $(document).click(function(e) {
       if(e.target.id == "remove-team"){
         self.removeTeam(e.target.value);
+      }else if(e.target.id=="add-game"){
+        location.window = "/games";
       }
     });
 
 
     this.renderTeams();
   };
+
 
   Plugin.prototype.sendA = function (action,params,callback) {
       this.socket.emit('sendAction',action,params,function(cb){
