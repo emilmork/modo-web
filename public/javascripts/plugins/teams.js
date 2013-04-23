@@ -45,7 +45,7 @@
       if(e.target.id == "remove-team"){
         self.removeTeam(e.target.value);
       }else if(e.target.id=="add-game"){
-        location.window = "/games";
+        window.location = "/games";
       }
     });
 
