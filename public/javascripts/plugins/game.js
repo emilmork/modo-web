@@ -128,7 +128,7 @@ Plugin.prototype.getGame = function(){
     var series_data = new Array();
     game.players.forEach(function(player){
       series_data.push({
-        name: player.name,
+        name: player.name + "("+player.role+")",
         data: player.actions
       });
     });
