@@ -29,6 +29,37 @@
 	margin-top: 15px;
 }
 
+.img-Volunteer {
+	background:url("../images/Volunteer.png") no-repeat;
+	border-style: none;
+	width: 25px;
+	height: 35px;
+	background-size: 25px 35px;
+}
+.img-Military {
+	background:url("../images/Military.png") no-repeat;
+	border-style: none;
+	width: 25px;
+	height: 35px;
+	background-size: 25px 35px;
+}
+.img-Medic {
+	background:url("../images/Medic.png") no-repeat;
+	border-style: none;
+	width: 25px;
+	height: 35px;
+	background-size: 25px 35px;
+}
+.img-Firefighter {
+	background:url("../images/Firefighter.png") no-repeat;
+	border-style: none;
+	width: 25px;
+	height: 35px;
+	background-size: 25px 35px;
+}
+
+
+
 .games-list {
 	cursor: hand; 
   	cursor: pointer;

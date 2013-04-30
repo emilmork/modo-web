@@ -132,9 +132,6 @@ Plugin.prototype.renderTeamNames = function(){
         debrief += "\n\n Overall goal:\n Get as many civilans as possible back to the blue sector(safe zone)."
 
       }
-      
-      alert("Game created!");
-
       equipments[0] = $("#extinguisher_count").val();
       
 
