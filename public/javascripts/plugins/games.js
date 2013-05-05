@@ -123,9 +123,11 @@ Plugin.prototype.renderTeamNames = function(){
       , panictime = $("#panictime").val()
       , roundtime = $("#roundtime").val()
       , equipments = new Array()
+      , nego = $("#negatiation").is(":checked")
       , debrief = $("#debrief").val();
 
-      if($("#show-civilans-checkbox").checked){
+      var civils = $("#show-civilans-checkbox").is(":checked");
+      if(civils){
         debrief += "\n\n\n There are in average two civilans in each sector";
       }
       if(debrief){
@@ -135,7 +137,7 @@ Plugin.prototype.renderTeamNames = function(){
       equipments[0] = $("#extinguisher_count").val();
       
 
-    var game = {'name' : name, 'desc' : desc, 'panicinterval' : (panictime * 60 * 1000), 'round' : (roundtime * 1000),'equipments' : equipments,'debrief' : debrief};
+    var game = {'name' : name, 'desc' : desc, 'panicinterval' : (panictime * 60 * 1000), 'round' : (roundtime * 1000),'equipments' : equipments,'debrief' : debrief, 'nego' : nego};
 
     var params = { 'team_name': team_name, 'game' : game };
 

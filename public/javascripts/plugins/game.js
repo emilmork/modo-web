@@ -61,6 +61,8 @@
     var self = this;
     var params = {game_name : this.gameName};
     this.sendAction('startGame',params,function(response){
+      console.log("Response from startGame");
+      console.log(response.started);
       if(response.started == 'ok'){
         self.getGame();
       }
