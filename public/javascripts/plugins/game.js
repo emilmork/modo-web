@@ -189,7 +189,7 @@ Plugin.prototype.getGame = function(){
                         connectorColor: '#000000',
                         formatter: function() {
                             if(this.point.name == 'Dead' || this.point.name == 'dead'){
-                               return '<b style="color:#EE2C2C">'+ this.point.name+ ' civils' +'</b>: '+ this.y;
+                               return '<b style="color:#454545">'+ this.point.name+ ' civils' +'</b>: '+ this.y;
                             }else if(this.point.name == 'Saved'){
                               return '<b style="color:#32CD32">'+ this.point.name + ' civils' +'</b>: '+ this.y;
                             }else {
