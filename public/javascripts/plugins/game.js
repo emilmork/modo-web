@@ -128,6 +128,8 @@ Plugin.prototype.getGame = function(){
   Plugin.prototype.renderStatistics = function(game){
 
     var series_data = new Array();
+    var series_civils = game.stats;
+
     game.players.forEach(function(player){
       series_data.push({
         name: player.name + "("+player.role+")",
@@ -140,17 +142,14 @@ Plugin.prototype.getGame = function(){
       data : game.actions
     });
 
-    console.log(series_data);
-    console.log(game.actions);
-
-
     $("#game-stat-container").highcharts({
         chart: {
             type: 'column',
             backgroundColor:'rgba(255, 255, 255, 0.1)'
+
         },
         title: {
-            text: 'Game actions'
+            text: 'Game actions performed during the game'
         },
         xAxis: {
             categories: ['Move people', 'New location','Calm down people', 'Used tool','People rescued']
@@ -162,6 +161,55 @@ Plugin.prototype.getGame = function(){
         },
         series: series_data,
     });
+
+    $("#game-stat-civilians-container").highcharts({
+
+        chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                backgroundColor:'rgba(255, 255, 255, 0.1)'
+            },
+
+            colors: ['#32CD32','#454545','#EE2C2C'],
+            title: {
+                text: 'Percentage of rescued and dead civilians'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.y}%</b>',
+              percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            if(this.point.name == 'Dead' || this.point.name == 'dead'){
+                               return '<b style="color:#EE2C2C">'+ this.point.name+ ' civils' +'</b>: '+ this.y;
+                            }else if(this.point.name == 'Saved'){
+                              return '<b style="color:#32CD32">'+ this.point.name + ' civils' +'</b>: '+ this.y;
+                            }else {
+                              return '<b style="color:#EE2C2C">'+ this.point.name + ' civils' +'</b>: '+ this.y;
+                            }
+                            
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Civilian share',
+                data: series_civils
+            }]
+
+
+
+    });
+
   }
 
 
