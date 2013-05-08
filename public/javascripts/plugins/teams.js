@@ -46,12 +46,88 @@
         self.removeTeam(e.target.value);
       }else if(e.target.id=="add-game"){
         window.location = "/games";
+      }else if(e.target.id=="show-stats"){
+        console.log("team-stats toggled");
+        $("#"+e.target.value+"-container").slideToggle(200,function(){
+        });
       }
     });
 
 
     this.renderTeams();
   };
+
+  Plugin.prototype.showStats = function(team_name,team){
+
+
+        var gameNames = new Array();
+        
+        var data_dead = new Array();
+        var data_saved = new Array();
+        var data_not_saved = new Array();
+        var data_score = new Array();
+
+        team.games.forEach(function(game){
+          gameNames.push(game.name);
+        })
+
+        team.games.forEach(function(game){
+           data_dead.push(game.stats[1][1]);
+           data_not_saved.push(game.stats[2][1]);
+           data_saved.push(game.stats[0].y);
+            console.log(game.stats);
+        });
+
+        var complete_data = [{
+            name : "Dead",
+            data : data_dead
+          },{
+            name : "Not Saved",
+            data : data_not_saved
+          },{
+           name : "Saved",
+           data : data_saved
+          }];
+
+        $("#"+team_name+"-container").highcharts({
+            chart: {
+                type: 'line',
+                marginRight: 130,
+                marginBottom: 25
+            },
+            title: {
+                text: 'Team progress',
+                x: -20 //center
+            },
+            subtitle: {
+                x: -20
+            },
+            xAxis: {
+                categories: gameNames
+            },
+            yAxis: {
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: 0,
+                y: 100,
+                borderWidth: 0
+            },
+            series: complete_data
+        });
+
+        $("#"+team_name+"-container").hide();
+  }
 
 
   Plugin.prototype.sendA = function (action,params,callback) {
@@ -93,7 +169,13 @@
           self.team = response;
           var html = template(response);
           $("#teams-list").append(html);
+          response.teams.forEach(function(team){
+            self.showStats(team.name,team);
+          })
+         
+         
       });
+      
   };
 
 

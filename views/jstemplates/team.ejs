@@ -21,10 +21,18 @@
       </ul>
       </div>
   </li>
+
     <div class="span2 btn-group">
         <button class="btn btn-small btn-success" id="add-game">Add game</button>
         <button class="btn btn-small btn-inverse" id="remove-team" value="{{name}}">Delete team</button>
     </div>
+    <div class="span2">
+    <button style="margin-top: 20px" class="btn btn-info btn-small" value="{{name}}" id="show-stats">Team progress</button>
+    </div>
+    <div class="span7">
+        <div class="" id="{{name}}-container" style="height: 200px"></div>
+    </div>
+
 </div>
 {{else}}
 <h3>No teams created</h3>
