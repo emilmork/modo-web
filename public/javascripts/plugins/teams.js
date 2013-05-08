@@ -72,6 +72,7 @@
         })
 
         team.games.forEach(function(game){
+           if(!game.stats)return;
            data_dead.push(game.stats[1][1]);
            data_not_saved.push(game.stats[2][1]);
            data_saved.push(game.stats[0].y);
@@ -93,7 +94,8 @@
             chart: {
                 type: 'line',
                 marginRight: 130,
-                marginBottom: 25
+                marginBottom: 25,
+                backgroundColor:'rgba(255, 255, 255, 0.1)'
             },
             title: {
                 text: 'Team progress',
