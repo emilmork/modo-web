@@ -176,7 +176,7 @@ Plugin.prototype.getGame = function(){
                 text: 'Percentage of rescued and dead civilians'
             },
             tooltip: {
-              pointFormat: '{series.name}: <b>{point.y}%</b>',
+              pointFormat: '{series.name}: <b>{point.y}/</b>',
               percentageDecimals: 1
             },
             plotOptions: {

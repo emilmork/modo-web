@@ -21,7 +21,6 @@ PageController.prototype.game = function(req,res){
   res.render('index', { game: req.params.id});
 }
 
-
 PageController.prototype.frontpage = function(req, res){
 	res.render('index', { title: 'Express' });
 };
@@ -29,7 +28,6 @@ PageController.prototype.frontpage = function(req, res){
 PageController.prototype.games = function(req, res){
 	res.render('index', { title: 'Express' });
 };
-
 
 PageController.prototype.about = function(req, res){
 	res.render('index', { title: 'Express' });
