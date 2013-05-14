@@ -129,7 +129,8 @@ Plugin.prototype.getGame = function(){
 
     var series_data = new Array();
     var series_civils = game.stats;
-
+    
+    
     game.players.forEach(function(player){
       series_data.push({
         name: player.name + "("+player.role+")",
@@ -176,7 +177,7 @@ Plugin.prototype.getGame = function(){
                 text: 'Percentage of rescued and dead civilians'
             },
             tooltip: {
-              pointFormat: '{series.name}: <b>{point.y}/</b>',
+              pointFormat: '{series.name}: <b>{point.y}</b>',
               percentageDecimals: 1
             },
             plotOptions: {
