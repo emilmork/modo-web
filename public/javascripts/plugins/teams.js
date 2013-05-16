@@ -173,6 +173,7 @@
           $("#teams-list").append(html);
           response.teams.forEach(function(team){
             self.showStats(team.name,team);
+            console.log(team);
           })
          
          

@@ -5,6 +5,16 @@
       <div class="span2">
         <h3 class="team-header">{{name}}</h3>
         <p class="team-description">{{desc}}</p>
+        {{#if acheivements}}
+        <h6>Acheivements</h6>
+        {{/if}}
+        <ul class="acheivements">
+          {{#each acheivements}}
+            <li><img class="acheivement" src="http://upload.wikimedia.org/wikipedia/commons/c/ce/Transparent.gif"><a>{{name}}</a></img></li>
+          {{else}}
+          <h6>No acheivements</h6>
+          {{/each}}
+        </ul>
       </div>
       <div class="span3">
       <h5>Games</h5>
