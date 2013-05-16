@@ -59,7 +59,7 @@
 
   Plugin.prototype.showStats = function(team_name,team){
 
-
+      console.log(team);
         var gameNames = new Array();
         
         var data_dead = new Array();
@@ -90,7 +90,7 @@
            data : data_saved
           }];
 
-        $("#"+team_name+"-container").highcharts({
+        $("#"+team._id+"-container").highcharts({
             chart: {
                 type: 'line',
                 marginRight: 130,
@@ -128,7 +128,7 @@
             series: complete_data
         });
 
-        $("#"+team_name+"-container").hide();
+        $("#"+team._id+"-container").hide();
   }
 
 
