@@ -28,6 +28,7 @@
   font-size: 12px;
   text-decoration: none;
 }
+
 .acheivement {
   background:url("../images/achivement.png") no-repeat;
   border-style: none;
@@ -36,20 +37,6 @@
   background-size: 30px 30px;
 }
 
-.acheivement-highscore {
-  background:url("../images/achivement-highscore.png") no-repeat;
-  border-style: none;
-  width: 25px;
-  height: 30px;
-  background-size: 25px 30px;
-}
-.acheivements-movement {
-  background:url("../images/achivement-movement.png") no-repeat;
-  border-style: none;
-  width: 25px;
-  height: 30px;
-  background-size: 25px 30px;
-}
 
 #teams-row {
 	margin-top: 10px;
