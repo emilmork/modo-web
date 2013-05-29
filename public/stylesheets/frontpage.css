@@ -16,7 +16,8 @@
 
 }
 
-.video-link{
+a {
+	text-decoration: none;
 	margin-top: 10px;
 	text-align: center;
 }
@@ -33,9 +34,7 @@ h5 {
 	margin-left:20px;
 
 }
-a {
-	text-decoration: none;
-}
+
 .create-account {
 	float: right;
 	cursor: hand; 

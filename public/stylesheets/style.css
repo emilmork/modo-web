@@ -3,9 +3,6 @@ body {
   background: url('../images/ecailles.png');
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-a {
-  color: blue;
-}
 
 .total-wrapper {
   position: relative;
